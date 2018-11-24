@@ -24,11 +24,11 @@ public class Tab extends JPanel implements AutoCloseable {
     public String html;
     public String title;
     
-    public Tab(HTTPRequester httpClient) {
-        this(httpClient, Jopenbrow.homepage);
+    public Tab() {
+        this(Jopenbrow.homepage);
     }
-    public Tab(HTTPRequester httpClient, URI location) {
-        this.httpClient = httpClient;
+    public Tab(URI location) {
+        httpClient = new HTTPRequester();
 
         currentURI = location;
         try {

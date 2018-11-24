@@ -9,15 +9,12 @@ import java.net.URL;
 
 public class Window extends JFrame implements AutoCloseable {
 
-    HTTPRequester httpClient;
-
     Tab currentPage;
     
     public Window() {
         super("Jopenbrow");
-        httpClient = new HTTPRequester();
         
-        currentPage = new Tab(httpClient);
+        currentPage = new Tab();
         setTitle(currentPage.title);
     
         setSize(1115, 690);
@@ -27,10 +24,9 @@ public class Window extends JFrame implements AutoCloseable {
     
     public Window(String site) {
         super("Jopenbrow");
-        httpClient = new HTTPRequester();
 
         try {
-            currentPage = new Tab(httpClient, new URI(site));
+            currentPage = new Tab(new URI(site));
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
