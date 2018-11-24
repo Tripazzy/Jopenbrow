@@ -4,8 +4,20 @@ import java.io.IOException;
 import java.net.URL;
 
 public class Tab {
+    private void display() {
+        //Get the title first
+        title = contentOfTag("title");
+    
+        System.out.println(title);
+    }
+    
+    private String contentOfTag(String tag) {
+        return html.split("<" + tag + ">")[1].split("</" + tag + ">")[0];
+    }
+    
     public URL currentURL;
     public String html;
+    public String title;
     
     public Tab() {
         this(Jopenbrow.homepage);
@@ -17,5 +29,7 @@ public class Tab {
         } catch (IOException e) {
             html = HTMLRequest.requestErrorPage();
         }
+        
+        display();
     }
 }
