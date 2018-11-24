@@ -11,12 +11,14 @@ public class Window extends JFrame {
     public Window() {
         super("Jopenbrow");
         
+        addTab();
+        
         setSize(1115, 690);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
     }
     
     public void addTab() {
-    
+        new Tab();
     }
 }
