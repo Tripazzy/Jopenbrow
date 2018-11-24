@@ -1,14 +1,16 @@
 package salsaboy.jopenbrow;
 
+import javax.swing.JPanel;
 import java.io.IOException;
 import java.net.URL;
 
-public class Tab {
+public class Tab extends JPanel {
     private void display() {
         //Get the title first
         title = contentOfTag("title");
-    
-        System.out.println(title);
+        
+        //Display
+        
     }
     
     private String contentOfTag(String tag) {

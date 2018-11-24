@@ -4,17 +4,17 @@ import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Window extends JFrame {
-    public List<Tab> tabs = new ArrayList<>();
+    Tab currentPage;
     
     public Window() {
         super("Jopenbrow");
         
-        tabs.add(new Tab());
-        
+        currentPage = new Tab();
+        setTitle(currentPage.title);
+        System.out.println("Title is " + currentPage.title);
+    
         setSize(1115, 690);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
@@ -24,11 +24,12 @@ public class Window extends JFrame {
         super("Jopenbrow");
     
         try {
-            tabs.add(new Tab(new URL(site)));
+            currentPage = new Tab(new URL(site));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-    
+        
+        setTitle(currentPage.title);
         setSize(1115, 690);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
