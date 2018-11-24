@@ -19,4 +19,7 @@ public class HTMLRequest {
         
         return ret;
     }
+    public static String requestErrorPage() {
+        return "<!doctype html><html><head><title>Error</title</head><body><h1>Cannot find the page required.</h1></body></html>";
+    }
 }
