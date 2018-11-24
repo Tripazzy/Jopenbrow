@@ -2,12 +2,12 @@ package salsaboy.jopenbrow;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.Scanner;
 
 public class Jopenbrow {
-    public static URL homepage;
+    public static URI homepage;
     
     public static void main(String[] args) throws IOException, URISyntaxException {
         Scanner configReader = new Scanner(new File(Jopenbrow.class.getResource("data").toURI()));
@@ -18,11 +18,15 @@ public class Jopenbrow {
             
             switch (command) {
                 case "homepage":
-                    homepage = new URL(param);
+                    homepage = new URI(param);
                     break;
             }
         }
         
-        new Window();
+        try (Window window = new Window()) {
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
