@@ -13,7 +13,6 @@ public class Window extends JFrame {
         
         currentPage = new Tab();
         setTitle(currentPage.title);
-        System.out.println("Title is " + currentPage.title);
     
         setSize(1115, 690);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
