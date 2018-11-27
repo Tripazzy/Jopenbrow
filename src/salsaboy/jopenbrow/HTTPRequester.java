@@ -37,7 +37,7 @@ public class HTTPRequester implements AutoCloseable {
 
 	public String requestPage(URI location) throws IOException {
 		HttpUriRequest request = RequestBuilder.get(location)
-				.setHeader("User-Agent", "JOpenBrowser v0.1")
+				.setHeader("User-Agent", "JOpenbrow v0.1")
 				.build();
 		CloseableHttpResponse response = client.execute(request);
 
