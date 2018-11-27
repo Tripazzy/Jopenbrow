@@ -3,9 +3,12 @@ package salsaboy.jopenbrow;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 
-public class Window extends JFrame {
+public class Window extends JFrame implements AutoCloseable {
+
 	Tab currentPage;
 
 	public Window() {
@@ -23,8 +26,8 @@ public class Window extends JFrame {
 		super("Jopenbrow");
 
 		try {
-			currentPage = new Tab(new URL(site));
-		} catch (MalformedURLException e) {
+			currentPage = new Tab(new URI(site));
+		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
 
@@ -32,5 +35,10 @@ public class Window extends JFrame {
 		setSize(1115, 690);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setVisible(true);
+	}
+
+	@Override
+	public void close() throws Exception {
+		currentPage.close();
 	}
 }
