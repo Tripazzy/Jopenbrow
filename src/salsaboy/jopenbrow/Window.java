@@ -9,36 +9,36 @@ import java.net.URL;
 
 public class Window extends JFrame implements AutoCloseable {
 
-    Tab currentPage;
-    
-    public Window() {
-        super("Jopenbrow");
-        
-        currentPage = new Tab();
-        setTitle(currentPage.title);
-    
-        setSize(1115, 690);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setVisible(true);
-    }
-    
-    public Window(String site) {
-        super("Jopenbrow");
+	Tab currentPage;
 
-        try {
-            currentPage = new Tab(new URI(site));
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
+	public Window() {
+		super("Jopenbrow");
 
-        setTitle(currentPage.title);
-        setSize(1115, 690);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setVisible(true);
-    }
+		currentPage = new Tab();
+		setTitle(currentPage.title);
 
-    @Override
-    public void close() throws Exception {
-        currentPage.close();
-    }
+		setSize(1115, 690);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		setVisible(true);
+	}
+
+	public Window(String site) {
+		super("Jopenbrow");
+
+		try {
+			currentPage = new Tab(new URI(site));
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+
+		setTitle(currentPage.title);
+		setSize(1115, 690);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		setVisible(true);
+	}
+
+	@Override
+	public void close() throws Exception {
+		currentPage.close();
+	}
 }
