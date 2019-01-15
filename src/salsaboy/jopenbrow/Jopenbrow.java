@@ -62,6 +62,7 @@ public class Jopenbrow implements HyperlinkListener
         if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED)
         {
             gotoPage(e.getURL());
+            searchbar.setText(e.getURL().toString());
         }
     }
 }
