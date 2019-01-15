@@ -1,9 +1,6 @@
 package salsaboy.jopenbrow;
 
-import javax.swing.JEditorPane;
-import javax.swing.JFrame;
-import javax.swing.JTextField;
-import javax.swing.WindowConstants;
+import javax.swing.*;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 import java.awt.BorderLayout;
@@ -17,8 +14,9 @@ public class Window extends JFrame implements HyperlinkListener, KeyListener
 {
 	public static String homepage = "https://www.google.com/";
 	
-	private JEditorPane page;
+	private JEditorPane page = new JEditorPane();
 	private JTextField search = new JTextField();
+	private JScrollPane scrollPane = new JScrollPane(page);
 	
 	public Window(URL url)
 	{
@@ -26,17 +24,17 @@ public class Window extends JFrame implements HyperlinkListener, KeyListener
 		
 		try
 		{
-			page = new JEditorPane(url);
+			page.setPage(url);
 		} catch (IOException e)
 		{
-			page = new JEditorPane("text/html", "404 Page not found");
+			page.setText("404 Page not found");
 		}
 		
 		page.setEditable(false);
 		
 		search.setText(url.toString());
 		
-		add(page);
+		add(scrollPane);
 		add(search, BorderLayout.NORTH);
 		
 		page.addHyperlinkListener(this);
