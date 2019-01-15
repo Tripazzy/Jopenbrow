@@ -1,28 +1,35 @@
 package salsaboy.jopenbrow;
 
-import java.io.File;
+import javax.swing.JEditorPane;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.WindowConstants;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.Scanner;
 
-public class Jopenbrow {
-    public static URL homepage;
+public class Jopenbrow
+{
+    private static JFrame frame = new JFrame("Jopenbrow");
+    private static JEditorPane window = new JEditorPane();
+    private static JScrollPane scrollPane = new JScrollPane(window);
     
-    public static void main(String[] args) throws IOException, URISyntaxException {
-        Scanner configReader = new Scanner(new File(Jopenbrow.class.getResource("data").toURI()));
-        while (configReader.hasNext()) {
-            String full = configReader.nextLine();
-            String command = full.split(":")[0];
-            String param = full.split(":")[1] + ":" + full.split(":")[2];
-            
-            switch (command) {
-                case "homepage":
-                    homepage = new URL(param);
-                    break;
-            }
+    public static void main(String[] args)
+    {
+        try
+        {
+            window.setPage(new URL("https://www.ecosia.org/"));
         }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    
+        window.setEditable(false);
         
-        new Window();
+        frame.add(scrollPane);
+        
+        frame.setSize(1280, 720);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setVisible(true);
     }
 }
