@@ -38,7 +38,7 @@ public class Jopenbrow implements HyperlinkListener
         frame.add(searchbar, BorderLayout.NORTH);
         frame.add(scrollPane);
         
-        gotoPage(new URL("https://www.bing.com/"));
+        gotoPage(new URL("https://www.google.com/"));
         
         searchbar.addActionListener(e ->
         {
